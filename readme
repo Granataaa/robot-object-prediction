@@ -1,0 +1,22 @@
+# Robot Object Prediction Assignment
+
+## Deliverable 1: MLP Position Prediction
+- **Test Error (MSE):** 0.04897
+- **Loss Curve:** ![Loss MLP](loss_mlp.png)
+
+## Deliverable 2: CNN Position Prediction
+- **Test Error (MSE):** 0.00034
+- **Loss Curve:** ![Loss CNN](loss_cnn.png)
+
+## Deliverable 3: Post-Action Image Reconstruction
+- **Test Error (MSE):** 0.00060
+- **Loss Curve:** ![Loss Recon](loss_recon.png)
+- **Reconstructed Images (Top: Real, Bottom: Generated):**
+![Reconstruction](reconstruction_results.png)
+
+### Analysis of Results
+The image reconstruction model (U-Net with Skip Connections) successfully learned to reconstruct static environment features (walls, robot arm) with high fidelity.
+
+Regarding the dynamic object (red cube/sphere), the model correctly predicts the **direction of movement** based on the action. However, the output appears blurry or shows a "ghosting" effect. This is an expected behavior due to the combination of **MSE Loss** and the limited dataset size (**1000 samples**), which is significantly smaller than typical datasets used for video prediction (usually 50k+ samples).
+
+Under these constraints, the network minimizes the error by predicting an "average" of possible future positions rather than a sharp, specific location, leading to the observed blurriness. Despite this "data starvation," the model demonstrates it has successfully learned the underlying physics dynamics.
