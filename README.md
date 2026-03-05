@@ -20,3 +20,6 @@ The image reconstruction model (U-Net with Skip Connections) successfully learne
 Regarding the dynamic object (red cube/sphere), the model correctly predicts the **direction of movement** based on the action. However, the output appears blurry or shows a "ghosting" effect. This is an expected behavior due to the combination of **MSE Loss** and the limited dataset size (**1000 samples**), which is significantly smaller than typical datasets used for video prediction (usually 50k+ samples).
 
 Under these constraints, the network minimizes the error by predicting an "average" of possible future positions rather than a sharp, specific location, leading to the observed blurriness. Despite this "data starvation," the model demonstrates it has successfully learned the underlying physics dynamics.
+
+## Wheights of the models
+https://drive.google.com/drive/folders/1wxteaqGVL-YkVL44H_5L7H9hlbmLcr71?usp=drive_link
